@@ -38,4 +38,21 @@ x[c(TRUE, FALSE, NA)] <- 1
 x
 df <- data.frame(a = c(1, 10, NA))
 df$a[df$a < 5] <- 0
+mtcars[mtcars$gear == 5 & mtcars$cyl == 4,]
+
+subset(mtcars, gear == 5)
+subset(mtcars, gear == 5 & cyl == 4)
+
+library(tidyverse)
+ggplot(data = subset(mtcars, gear == 5 & cyl == 4),
+aes(x = mpg, y = disp)) + geom_point()
+
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
 df
+df$z <- NULL
+df
+
+df[c("x", "y")]
+
+#use logic to subset columns, but you will probably use it more to subset rows
+df[setdiff(names(df), "z")]
